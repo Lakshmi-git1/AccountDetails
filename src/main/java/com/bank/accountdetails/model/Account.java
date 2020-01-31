@@ -2,7 +2,10 @@ package com.bank.accountdetails.model;
 
 import java.sql.Date;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
@@ -10,6 +13,8 @@ import javax.persistence.Table;
 public class Account {
 
 	@Id
+	@SequenceGenerator(name="seq", initialValue=123456789, allocationSize=100)
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="seq")
 	private Long AccountNumber;
 	private String AccountName;
 	private String AccountType;
